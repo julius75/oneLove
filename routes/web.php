@@ -18,4 +18,11 @@ Route::get('/', function () {
 Auth::routes();
 Route::get('/user/verify/{token}', 'Auth\RegisterController@verifyUser');
 
-Route::get('/home', 'HomeController@index')->name('home');
+//Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', 'ProposalController@index')->name('home');;
+
+//store proposal to db
+Route::get('/store', 'ProposalController@store');
+//display them
+
+Route::get('/products', 'ProposalController@index');
