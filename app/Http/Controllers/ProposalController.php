@@ -2,9 +2,17 @@
 
 namespace App\Http\Controllers;
 
+// App\Mail\ReplyMail;
+
+use App\User;
 use App\Proposal;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Validator;
+
 
 class ProposalController extends Controller
 {
@@ -18,11 +26,6 @@ class ProposalController extends Controller
         $this->middleware('auth');
     }
 
-    /**
-     * Show the application dashboard.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
         return view('home');
@@ -31,31 +34,18 @@ class ProposalController extends Controller
 //    validate data in proposal fields
     public function store(Request $request)
     {
-//        $validatedData = $request->validate([
-//            'title' => 'required|unique:posts|max:255',
-//            'body' => 'required',
-//        ]);
-
-//        $draft=$request->input('save_as_draft');
-//        $submit=Input::get('submit');
-        if($request->has('save_as_draft')){
-            return 'saving as draft';
+            $save=Proposal::create($request->all());
+            if($save){
+                flash('Proposal successfully submitted')->success()->important();
+                return back();
+            }
+            flash('An error occurred while trying to submit the proposal! Please try again')->error()->important();
+            return back();
         }
-        elseif ($request->has('save')){
-            return 'submitting proposal';
+
+        public function view_proposals(){
+        return view('admin.view_proposal');
         }
-       else{
-            return 'no selected button';
-       }
-
-        // The blog post is valid...
-    }
-
-    public function show()
-    {
-        $proposal = Proposal::all();
-       // return view('products.index',compact('products',$products));
-    }
 
 
 }

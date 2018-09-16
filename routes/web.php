@@ -22,9 +22,13 @@ Route::get('/user/verify/{token}', 'Auth\RegisterController@verifyUser');
 Route::get('/home', 'ProposalController@index')->name('home');;
 
 //store proposal to db
-Route::get('/store', 'ProposalController@store');
+//Route::get('/store', 'ProposalController@store');
 //display them
 
 Route::get('/products', 'ProposalController@index');
 Route::get('/admin','AdminController@index');
 Route::post('save-proposal','ProposalController@store')->name('proposal');
+
+Route::get('view_proposals','ProposalController@view_proposals')->name('view_proposals');
+
+Route::post('store','ProposalController@store')->name('store');

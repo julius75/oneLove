@@ -58,7 +58,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="user.html">
+                    <a href="{{route('view_proposals')}}">
                         <i class="fa fa-list"></i>
                         <p>View All Proposals</p>
                     </a>
@@ -118,21 +118,17 @@
                                 <p class="hidden-lg hidden-md">Dashboard</p>
                             </a>
                         </li>
+
                         <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                <i class="fa fa-envelope"></i>&nbsp;<span style="color: red;">3</span>
-                                <b class="caret hidden-lg hidden-md"></b>
-                                <p class="hidden-lg hidden-md">
-                                    5 Notifications
-                                    <b class="caret"></b>
-                                </p>
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Notifications
+                                <i class="fa fa-envelope" ></i>&nbsp; <span style="color: red;">3</span>
+
                             </a>
                             <ul class="dropdown-menu">
                                 <li><a href="#">Notification 1</a></li>
                                 <li><a href="#">Notification 2</a></li>
                                 <li><a href="#">Notification 3</a></li>
-                                <li><a href="#">Notification 4</a></li>
-                                <li><a href="#">Another notification</a></li>
+
                             </ul>
                         </li>
                         <li>
