@@ -25,7 +25,7 @@ class CreateProposalsTable extends Migration
             $table->string('email');
 
             $table->string('submitted_by_name');
-            $table->string('title');
+            $table->string('title_organization');
             $table->string('summary');
             $table->string('background');
             $table->string('activities');

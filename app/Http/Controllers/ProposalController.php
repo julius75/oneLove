@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Proposal;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Input;
 
 class ProposalController extends Controller
 {
@@ -30,13 +31,22 @@ class ProposalController extends Controller
 //    validate data in proposal fields
     public function store(Request $request)
     {
-        $validatedData = $request->validate([
-            'title' => 'required|unique:posts|max:255',
-            'body' => 'required',
-        ]);
-        Proposal::create($request->all());
+//        $validatedData = $request->validate([
+//            'title' => 'required|unique:posts|max:255',
+//            'body' => 'required',
+//        ]);
 
-        return redirect('/home');
+//        $draft=$request->input('save_as_draft');
+//        $submit=Input::get('submit');
+        if($request->has('save_as_draft')){
+            return 'saving as draft';
+        }
+        elseif ($request->has('save')){
+            return 'submitting proposal';
+        }
+       else{
+            return 'no selected button';
+       }
 
         // The blog post is valid...
     }

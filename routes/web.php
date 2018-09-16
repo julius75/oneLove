@@ -26,3 +26,5 @@ Route::get('/store', 'ProposalController@store');
 //display them
 
 Route::get('/products', 'ProposalController@index');
+Route::get('/admin','AdminController@index');
+Route::post('save-proposal','ProposalController@store')->name('proposal');
