@@ -32,3 +32,5 @@ Route::post('save-proposal','ProposalController@store')->name('proposal');
 Route::get('view_proposals','ProposalController@view_proposals')->name('view_proposals');
 
 Route::post('store','ProposalController@store')->name('store');
+
+//Route::get('view','ProposalController@view_proposal');

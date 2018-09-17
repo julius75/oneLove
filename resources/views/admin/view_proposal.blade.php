@@ -4,42 +4,31 @@
         <!DOCTYPE html>
 <html>
 <head>
-    <h3 style="text-align: center;">Suggestions</h3>
+    <h3 style="text-align: center; margin-top: auto;">Suggestions</h3>
 </head>
 <body>
-<style>
-    table th,td{
-        border: 1px solid black;
-    }
-    table{
-        border-collapse: collapse;
-        width: 100%;
-    }
-    th{
-        height: 50px;
-    }
-</style>
-<table>
-    <thead>
-    <th>No.</th>
-    <th>Title</th>
-    <th>Description</th>
-    <th>Response</th>
-    </thead>
-    {{--@foreach($suggestion as $suggestions)--}}
+
+    @if(count($posts)>=1)
+        @foreach($posts as $post)
+            <div class="well">
+                <h3>{{$post->email}}</h3>
+                <h3>{{$post->id}}</h3>
+            </div>
+            @endforeach
+        @else
+        <p>No Proposals Submitted Yet</p>
+        @endif
+    {{--@foreach ($proposals as $proposal)--}}
         {{--<tr>--}}
-            {{--<td>{{$number++}}</td>--}}
-            {{--<td>{{$suggestions->title}}</td>--}}
-            {{--<td>{{$suggestions->description}}</td>--}}
-            {{--<td>@if($suggestions->reply==null)--}}
-                    {{--<b>Not yet replied</b>--}}
-                {{--@else--}}
-                    {{--{{$suggestions->reply}}--}}
-                {{--@endif--}}
-            {{--</td>--}}
+            {{--<td>{{ $number++ }}</td>--}}
+            {{--<td>{{ $proposal->email}}</td>--}}
         {{--</tr>--}}
     {{--@endforeach--}}
-</table>
+
+</body>
+</html>
+
+
 </body>
 </html>
 @endsection

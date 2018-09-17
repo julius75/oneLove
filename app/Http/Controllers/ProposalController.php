@@ -43,9 +43,13 @@ class ProposalController extends Controller
             return back();
         }
 
-        public function view_proposals(){
-        return view('admin.view_proposal');
-        }
+
+
+    public function view_proposals(){
+        $posts=Proposal::orderBy('created_at','desc')->get();
+
+        return view('admin.view_proposal',compact('posts'));
+    }
 
 
 }
