@@ -51,5 +51,32 @@ class ProposalController extends Controller
         return view('admin.view_proposal',compact('posts'));
     }
 
+    public function proposal_details($id){
+
+        $post = Proposal::find($id);
+        return view('admin.show_link_proposal')->with('post',$post);
+
+    }
+
+    public function dashboard(){
+        return view('admin.index');
+    }
+    public function stage_one(){
+
+        echo 1;
+    }
+    public function stage_two(){
+
+        echo 2;
+    }
+    public function rejected(){
+
+        echo 2;
+    }
+    public function accepted(){
+
+        echo 4;
+    }
+
 
 }

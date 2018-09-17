@@ -4,15 +4,15 @@
         <!DOCTYPE html>
 <html>
 <head>
-    <h3 style="text-align: center; margin-top: auto;">Suggestions</h3>
+    <h3 style="text-align: center; margin-top: auto;">Submitted Proposals</h3>
 </head>
 <body>
 
     @if(count($posts)>=1)
         @foreach($posts as $post)
             <div class="well">
-                <h3>{{$post->email}}</h3>
-                <h3>{{$post->id}}</h3>
+                <h3> <a href="/proposal_details/{{$post->id}}">{{$post->email}}</a> </h3>
+                <small> Submitted on{{$post->id}}</small>
             </div>
             @endforeach
         @else

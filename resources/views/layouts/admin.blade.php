@@ -52,7 +52,7 @@
 
             <ul class="nav">
                 <li class="active">
-                    <a href="dashboard.html">
+                    <a href="{{route('dashboard')}}">
                         <i class="pe-7s-graph"></i>
                         <p>Dashboard</p>
                     </a>
@@ -64,25 +64,25 @@
                     </a>
                 </li>
                 <li>
-                    <a href="table.html">
+                    <a href="{{route('stage_one')}}">
                         <i class="pe-7s-note2"></i>
                         <p>Stage 1 Proposals</p>
                     </a>
                 </li>
                 <li>
-                    <a href="typography.html">
+                    <a href="{{route('stage_two')}}">
                         <i class="pe-7s-note2"></i>
                         <p>Stage 2 Proposals</p>
                     </a>
                 </li>
                 <li>
-                    <a href="icons.html">
+                    <a href="{{route('rejected')}}">
                         <i class="fa fa-ban"></i>
                         <p>Rejected Proposals</p>
                     </a>
                 </li>
                 <li>
-                    <a href="maps.html">
+                    <a href="{{route('accepted')}}">
                         <i class="fa fa-check"></i>
                         <p>Accepted Proposals</p>
                     </a>
@@ -124,12 +124,7 @@
                                 <i class="fa fa-envelope" ></i>&nbsp; <span style="color: red;">3</span>
 
                             </a>
-                            <ul class="dropdown-menu">
-                                <li><a href="#">Notification 1</a></li>
-                                <li><a href="#">Notification 2</a></li>
-                                <li><a href="#">Notification 3</a></li>
 
-                            </ul>
                         </li>
                         <li>
 
