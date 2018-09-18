@@ -36,17 +36,11 @@
 <div class="wrapper">
     <div class="sidebar" data-color="purple" data-image="assets/img/sidebar-5.jpg">
 
-        <!--
-
-            Tip 1: you can change the color of the sidebar using: data-color="blue | azure | green | orange | red | purple"
-            Tip 2: you can also add an image using data-image tag
-
-        -->
 
         <div class="sidebar-wrapper">
             <div class="logo">
-                <a href="http://www.creative-tim.com" class="simple-text">
-                    Creative Tim
+                <a href="#" class="simple-text">
+                    oneLOVE
                 </a>
             </div>
 
@@ -63,7 +57,7 @@
                         <p>View All Proposals</p>
                     </a>
                 </li>
-                <li>
+                <li >
                     <a href="{{route('stage_one')}}">
                         <i class="pe-7s-note2"></i>
                         <p>Stage 1 Proposals</p>
@@ -159,6 +153,7 @@
                                 <h4 class="title text-center">@yield('header')</h4>
                             </div>
                             <div class="content">
+                                @include('flash::message')
                                 <div>@yield('content')</div>
 
                             </div>
@@ -181,7 +176,7 @@
 
                 </nav>
                 <p class="copyright pull-right">
-                    &copy; <script>document.write(new Date().getFullYear())</script> <a href="http://www.creative-tim.com">Creative Tim</a>, made with love for a better web
+                    &copy; <script>document.write(new Date().getFullYear())</script> <a href="">Chain j</a>, made with love for a better web
                 </p>
             </div>
         </footer>

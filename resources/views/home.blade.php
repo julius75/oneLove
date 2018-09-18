@@ -1,9 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <h1 class="text-center">Add New Proposal</h1>
-    <hr>
-    <div class="container">
+    <div class="container" style="border: 2px solid black;background-color: whitesmoke">
         <form action="{{route('store')}}" method="post">
             {{ csrf_field() }}
         <div class="row">

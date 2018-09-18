@@ -18,12 +18,6 @@
         @else
         <p>No Proposals Submitted Yet</p>
         @endif
-    {{--@foreach ($proposals as $proposal)--}}
-        {{--<tr>--}}
-            {{--<td>{{ $number++ }}</td>--}}
-            {{--<td>{{ $proposal->email}}</td>--}}
-        {{--</tr>--}}
-    {{--@endforeach--}}
 
 </body>
 </html>

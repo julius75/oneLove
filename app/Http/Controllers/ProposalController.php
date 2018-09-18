@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 // App\Mail\ReplyMail;
 
+use App\StageOneProposal;
 use App\User;
 use App\Proposal;
+use App\verifyUser;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Auth;
@@ -71,12 +73,65 @@ class ProposalController extends Controller
     }
     public function rejected(){
 
-        echo 2;
+        $proposal=Proposal::where('status','rejected')->orderBy('created_at','desc')->paginate(10);
+        return view('admin.rejected',compact('proposal'));
     }
     public function accepted(){
 
-        echo 4;
+        $proposal=Proposal::where('status','accepted')->orderBy('created_at','desc')->paginate(10);
+        return view('admin.rejected',compact('proposal'));
     }
+    public function first_reject($id){
 
+        $approved = Proposal::where('approve',false)->get();
+
+            return view('admin.view.stage_one',compact('approved'));
+     }
+     public function reject_proposal(Request $request,$id){
+    $proposal=Proposal::where('id',$id)->update([
+        'status'=>'rejected'
+    ]);
+    //dd($proposal);
+    if ($proposal){
+        flash('Proposal rejected successfully')->success()->important();
+        return back();
+    }
+    flash('An error occurred while trying to reject proposal')->error()->important();
+    return back();
+
+
+     }
+     public function accept(Request $request,$id){
+         $proposal=Proposal::where('id',$id)->update([
+             'status'=>'accepted'
+         ]);
+         if ($proposal){
+             $proposal=Proposal::where('id',$id)->first();
+             $accepted=StageOneProposal::create([
+                 'title'=>$proposal->title,
+                 'proposal_id'=>$proposal->id,
+                 'organization_name'=>$proposal->organization_name,
+                 'address'=>$proposal->address,
+                 'phone'=>$proposal->phone,
+                 'email'=>$proposal->email,
+                 'submitted_by_name'=>$proposal->submitted_by_name,
+                 'title_organization'=>$proposal->title_organization,
+                 'summary'=>$proposal->summary,
+                 'background'=>$proposal->background,
+                 'activities'=>$proposal->activities,
+                 'budget'=>$proposal->budget,
+             ]);
+             if ($accepted){
+                 flash('Proposal accepted successfully and moved to stage one')->success()->important();
+                 return back();
+             }
+             flash('Proposal accepted successfully but an error occurred while trying to move it to step on! Please try again')->error()->important();
+             return back();
+         }
+         flash('An error ocuured while trying to accept a proposal! Please try agin!')->error()->important();
+         return back();
+
+
+     }
 
 }
