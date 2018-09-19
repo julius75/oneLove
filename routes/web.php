@@ -37,11 +37,16 @@ Route::post('store','ProposalController@store')->name('store');
 //Route::get('view','ProposalController@view_proposal');
 Route::get('proposal_details/{id}','ProposalController@proposal_details')->name('proposal_details');
 
-Route::get('stage_one','ProposalController@stage_one')->name('stage_one');
+
 Route::get('stage_two','ProposalController@stage_two')->name('stage_two');
 Route::get('rejected','ProposalController@rejected')->name('rejected');
 Route::get('accepted','ProposalController@accepted')->name('accepted');
+
 Route::get('/reject/{id}','ProposalController@reject_proposal');
 Route::get('/accept-stage-one/{id}','ProposalController@accept');
+
+Route::get('stage_one','ProposalController@stage_one')->name('stage_one');
+
+
 
 //Route::get('/proposal_details/{$id}/reject','ProposalController@first_reject')->name('first_reject');

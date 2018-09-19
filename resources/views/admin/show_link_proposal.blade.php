@@ -2,9 +2,11 @@
 
 @section('content')
 <h1>{{$post->title}}</h1>
-    <small>Auther: {{$post->email}} </small>
+    <p>Auther: {{$post->email}} </p>
     <div>
+
         {{$post->budget}}
+        {{$post->id}}
     </div>
 @if($post->status=='rejected')
 

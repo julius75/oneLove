@@ -63,10 +63,7 @@ class ProposalController extends Controller
     public function dashboard(){
         return view('admin.index');
     }
-    public function stage_one(){
 
-        echo 1;
-    }
     public function stage_two(){
 
         echo 2;
@@ -87,10 +84,17 @@ class ProposalController extends Controller
 
             return view('admin.view.stage_one',compact('approved'));
      }
+
+
+
      public function reject_proposal(Request $request,$id){
     $proposal=Proposal::where('id',$id)->update([
         'status'=>'rejected'
     ]);
+         //$email=Proposal::where('id',$id)->first();
+         //$user_email=User::where('id',$email->user_id)->first();
+         //$proposals=Proposal::where('id',$id)->first();
+        // Mail::to($user_email->email)->send(new ReplyMail($proposals));
     //dd($proposal);
     if ($proposal){
         flash('Proposal rejected successfully')->success()->important();
@@ -133,5 +137,11 @@ class ProposalController extends Controller
 
 
      }
+
+
+    public function stage_one(){
+        $one=StageOneProposal::orderBy('created_at','desc')->get();
+        return view('proposal.stage_one_list',compact('one'));
+    }
 
 }

@@ -34,7 +34,8 @@ class LoginController extends Controller
             auth()->logout();
             flash('You need to confirm your account. We have sent you an activation code, please check your email.');
             return back();
-    }elseif ($user->user_type==='admin'){
+    }
+    elseif ($user->user_type==='admin'){
           return redirect('/admin');
         }
     return redirect()->intended($this->redirectPath());
