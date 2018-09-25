@@ -38,7 +38,7 @@ Route::post('store','ProposalController@store')->name('store');
 Route::get('proposal_details/{id}','ProposalController@proposal_details')->name('proposal_details');
 
 
-Route::get('stage_two','ProposalController@stage_two')->name('stage_two');
+
 Route::get('rejected','ProposalController@rejected')->name('rejected');
 Route::get('accepted','ProposalController@accepted')->name('accepted');
 
@@ -47,6 +47,14 @@ Route::get('/accept-stage-one/{id}','ProposalController@accept');
 
 Route::get('stage_one','ProposalController@stage_one')->name('stage_one');
 
+Route::get('details_stage_one/{id}','ProposalController@details_stage_one')->name('details_stage_one');
 
 
-//Route::get('/proposal_details/{$id}/reject','ProposalController@first_reject')->name('first_reject');
+Route::get('reject_stage_one/{id}','ProposalController@reject_stage_one')->name('reject_stage_one');
+Route::get('accept_stage_two/{id}','ProposalController@accept_stage_two')->name('accept_stage_two');
+
+Route::get('stage_two','ProposalController@stage_two')->name('stage_two');
+Route::get('details_stage_two/{id}','ProposalController@details_stage_two')->name('details_stage_two');
+
+Route::get('reject_stage_two/{id}','ProposalController@reject_stage_two')->name('reject_stage_two');
+Route::get('accept_stage_final/{id}','ProposalController@accept_stage_final')->name('accept_stage_final');

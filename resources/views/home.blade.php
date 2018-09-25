@@ -59,7 +59,8 @@
 
             </div>
             {{--<button type="submit" class="btn btn-primary" name="submit" value="save_as_draft">Save as draft</button>&nbsp;--}}
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="Submit" value="save" name="btn" class="btn btn-primary">Save</button>
+            <button type="Submit" value="draft" name="sub" class="btn btn-primary">Draft</button>
         </div>
         </form>
 

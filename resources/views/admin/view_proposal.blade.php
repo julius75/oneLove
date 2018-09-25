@@ -22,6 +22,8 @@
         <p>No Proposals Submitted Yet</p>
         @endif
 
+{!! $posts->links() !!}
+
 </body>
 </html>
 

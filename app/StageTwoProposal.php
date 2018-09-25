@@ -6,5 +6,5 @@ use Illuminate\Database\Eloquent\Model;
 
 class StageTwoProposal extends Model
 {
-    //
+    protected $guarded = [];
 }

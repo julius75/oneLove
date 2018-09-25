@@ -2,26 +2,25 @@
 
 namespace App\Mail;
 
-use App\Proposal;
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
-class ReplyMail extends Mailable
+class AcceptToStageTwo extends Mailable
 {
     use Queueable, SerializesModels;
-    public $proposals;
+    public $ones;
 
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct($proposals)
+    public function __construct($ones)
     {
         //
-        $this->proposals=$proposals;
+        $this->ones =$ones;
     }
 
     /**
@@ -31,8 +30,6 @@ class ReplyMail extends Mailable
      */
     public function build()
     {
-//        $this->id=$suggestion_id;
-//        $suggestion=Suggestion::where('id',$suggestion_id)->first();
-        return $this->view('emails.response');
+        return $this->view('emails.accept_to_stage_two');
     }
 }
