@@ -4,20 +4,20 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateProposalsTable extends Migration
+class CreateStageOneProposalsTable extends Migration
 {
     /**
      * Run the migrations.
      *
      * @return void
      */
-//    table for proposals
-
     public function up()
     {
-        Schema::create('proposals', function (Blueprint $table) {
+        Schema::create('stage_one_proposals', function (Blueprint $table) {
             $table->increments('id');
             $table->string('title');
+            $table->unsignedInteger('proposal_id')->unique();
+            $table->foreign('proposal_id')->references('id')->on('proposals');
             $table->string('organization_name');
             $table->string('address');
             $table->string('phone');
@@ -41,6 +41,6 @@ class CreateProposalsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('proposals');
+        Schema::dropIfExists('stage_one_proposals');
     }
 }

@@ -1,9 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <h1 class="text-center">Add New Proposal</h1>
-    <hr>
-    <div class="container">
+    <div class="container" style="border: 2px solid black;background-color: whitesmoke">
         <form action="{{route('store')}}" method="post">
             {{ csrf_field() }}
         <div class="row">
@@ -61,7 +59,8 @@
 
             </div>
             {{--<button type="submit" class="btn btn-primary" name="submit" value="save_as_draft">Save as draft</button>&nbsp;--}}
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="Submit" value="save" name="btn" class="btn btn-primary">Save</button>
+            <button type="Submit" value="draft" name="sub" class="btn btn-primary">Draft</button>
         </div>
         </form>
 
