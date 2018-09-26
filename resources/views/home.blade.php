@@ -9,24 +9,24 @@
                 <h5 style="text-decoration: underline;">Proposal Details</h5>
                 <div class="form-group">
                     <label for="title">Proposal Title</label>
-                    <input type="text" class="form-control"   name="title" >
+                    <input type="text" class="form-control"   name="title" required >
                 </div>
                 <h5 style="text-decoration: underline;">Organization</h5>
                 <div class="form-group">
                     <label for="organization_name">Name</label>
-                    <input type="text" class="form-control"   name="organization_name" >
+                    <input type="text" class="form-control"   name="organization_name" required>
                 </div>
                 <div class="form-group">
                     <label for="address">Address</label>
-                    <input type="text" class="form-control"  name="address" >
+                    <input type="text" class="form-control"  name="address" required>
                 </div>
                 <div class="form-group">
                     <label for="phone">Phone</label>
-                    <input type="number" class="form-control"  name="phone" >
+                    <input type="text" class="form-control"  name="phone" required>
                 </div>
                 <div class="form-group">
                     <label for="email">Email</label>
-                    <input type="email" class="form-control"  name="email" >
+                    <input type="email" class="form-control"  name="email" required>
                 </div>
             </div>
             <div class="col-md-6">
@@ -34,27 +34,27 @@
                 <h5 style="text-decoration: underline;">Submitted By:</h5>
                 <div class="form-group">
                     <label for="submitted_by_name">Name</label>
-                    <input type="text" class="form-control"  name="submitted_by_name">
+                    <input type="text" class="form-control"  name="submitted_by_name" required>
                 </div>
                 <div class="form-group">
                     <label for="title_organization">Title</label>
-                    <input type="text" class="form-control"  name="title_organization">
+                    <input type="text" class="form-control"  name="title_organization" required>
                 </div>
                 <div class="form-group">
                     <label for="summary">Summary</label>
-                    <input type="" class="form-control"  name="summary">
+                    <input type="" class="form-control"  name="summary" required>
                 </div>
                 <div class="form-group">
                     <label for="title">Background</label>
-                    <input type="text" class="form-control"  name="background">
+                    <input type="text" class="form-control"  name="background" required>
                 </div>
                 <div class="form-group">
                     <label for="background">Activities</label>
-                    <input type="text" class="form-control"  name="activities">
+                    <input type="text" class="form-control"  name="activities" required>
                 </div>
                 <div class="form-group">
                     <label for="title">Budget</label>
-                    <input type="text" class="form-control"  name="budget">
+                    <input type="text" class="form-control"  name="budget" required>
                 </div>
 
             </div>

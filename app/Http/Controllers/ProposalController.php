@@ -48,14 +48,14 @@ class ProposalController extends Controller
             'title'=>'string|required',
             'organization_name'=>'required',
             'address'=>'string',
-            'phone'=>'required|numeric|size:11',
+            'phone'=>'required|numeric|size:10',
             'email'=>'required|email',
             'submitted_by_name'=>'required|string',
             'title_organization'=>'required|string',
             'summary'=>'required|string',
             'background'=>'required|string',
             'activities'=>'required|string',
-            'budget'=>'required|numeric|min:4|max:6',
+            'budget'=>'required|numeric|min:4|max:9',
 
         ]);
             $save=Proposal::create($request->all());
@@ -70,7 +70,7 @@ class ProposalController extends Controller
 
 
     public function view_proposals(){
-        $posts=Proposal::orderBy('created_at','desc')->paginate(5);
+        $posts=Proposal::orderBy('created_at','desc')->paginate(3);
 
         return view('admin.view_proposal',compact('posts'));
     }
@@ -258,5 +258,13 @@ class ProposalController extends Controller
         $twos=StageTwoProposal::where('status','accepted')->orderBy('created_at','desc')->paginate(10);
         return view('admin.accepted_proposals',compact('twos'));
     }
+
+//    public function unread(){
+//        $noti = DB::table('proposals')
+//            ->where('status','not approved')
+//            ->count();
+//        echo $noti;
+//
+//    }
 
 }

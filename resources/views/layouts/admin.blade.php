@@ -44,7 +44,7 @@
                 </a>
             </div>
 
-            <ul class="nav">
+            <ul class="nav" >
                 <li class="{{ Request::is('dashboard*') ? 'active' : '' }}">
                     <a href="{{route('dashboard')}}">
                         <i class="pe-7s-graph"></i>
@@ -93,7 +93,7 @@
     </div>
 
     <div class="main-panel">
-        <nav class="navbar navbar-default navbar-fixed">
+        <nav class="navbar navbar-default  bg-light navbar-light fixed-top">
             <div class="container-fluid">
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navigation-example-2">
@@ -113,10 +113,10 @@
                             </a>
                         </li>
 
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Notifications
-                                <i class="fa fa-envelope" ></i>&nbsp; <span style="color: red;">3</span>
-
+                        <li >
+                            <a href=>Unread proposals
+                                <i class="fa fa-envelope"></i>&nbsp; <span style="color: red;"></span>
+                                @include('proposal.unread')
                             </a>
 
                         </li>
