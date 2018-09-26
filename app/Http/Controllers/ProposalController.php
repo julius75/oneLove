@@ -44,20 +44,27 @@ class ProposalController extends Controller
 //    validate data in proposal fields
     public function store(Request $request)
     {
-        $input = $request->input('btn');
-        //$draft = $request->input('sub');
-        if (isset($input)){
-            return 123;
-        }
+        $request->validate([
+            'title'=>'string|required',
+            'organization_name'=>'required',
+            'address'=>'string',
+            'phone'=>'required|numeric|size:11',
+            'email'=>'required|email',
+            'submitted_by_name'=>'required|string',
+            'title_organization'=>'required|string',
+            'summary'=>'required|string',
+            'background'=>'required|string',
+            'activities'=>'required|string',
+            'budget'=>'required|numeric|min:4|max:6',
 
-
-//            $save=Proposal::create($request->all());
-//            if($save){
-//                flash('Proposal successfully submitted')->success()->important();
-//                return back();
-//            }
-//            flash('An error occurred while trying to submit the proposal! Please try again')->error()->important();
-//            return back();
+        ]);
+            $save=Proposal::create($request->all());
+            if($save){
+                flash('Proposal successfully submitted')->success()->important();
+                return back();
+            }
+            flash('An error occurred while trying to submit the proposal! Please try again')->error()->important();
+            return back();
         }
 
 
@@ -93,11 +100,7 @@ class ProposalController extends Controller
     $proposal=Proposal::where('id',$id)->update([
         'status'=>'rejected'
     ]);
-         //$email=Proposal::where('id',$id)->first();
-         //$user_email=User::where('id',$email->user_id)->first();
-         //$proposals=Proposal::where('id',$id)->first();
-        // Mail::to($user_email->email)->send(new ReplyMail($proposals));
-    //dd($proposal);
+
     if ($proposal){
         $proposal=Proposal::where('id',$id)->first();
         Mail::to($proposal->email)->send(new ProposalRejected($proposal) );
