@@ -40,60 +40,60 @@
         <div class="sidebar-wrapper">
             <div class="logo">
                 <a href="#" class="simple-text">
-                    oneLOVE
+                    oneLOVE proposal review process
                 </a>
             </div>
 
-            <ul class="nav">
-                <li class="active">
+            <ul class="nav" >
+                <li class="{{ Request::is('dashboard*') ? 'active' : '' }}">
                     <a href="{{route('dashboard')}}">
                         <i class="pe-7s-graph"></i>
                         <p>Dashboard</p>
                     </a>
                 </li>
-                <li>
+                <li class="{{ Request::is('view_proposals*') ? 'active' : '' }}">
                     <a href="{{route('view_proposals')}}">
                         <i class="fa fa-list"></i>
                         <p>View All Proposals</p>
                     </a>
                 </li>
-                <li >
+                <li class="{{ Request::is('stage_one*') ? 'active' : '' }}">
                     <a href="{{route('stage_one')}}">
                         <i class="pe-7s-note2"></i>
                         <p>Stage 1 Proposals</p>
                     </a>
                 </li>
-                <li>
+                <li class="{{ Request::is('stage_two*') ? 'active' : '' }}">
                     <a href="{{route('stage_two')}}">
                         <i class="pe-7s-note2"></i>
                         <p>Stage 2 Proposals</p>
                     </a>
                 </li>
-                <li>
+                <li class="{{ Request::is('rejected*') ? 'active' : '' }}">
                     <a href="{{route('rejected')}}">
                         <i class="fa fa-ban"></i>
                         <p>Rejected Proposals</p>
                     </a>
                 </li>
-                <li>
+                <li class="{{ Request::is('accepted*') ? 'active' : '' }}">
                     <a href="{{route('accepted')}}">
                         <i class="fa fa-check"></i>
                         <p>Accepted Proposals</p>
                     </a>
                 </li>
-                <li>
-                    <a href="notifications.html">
-                        <i class="fa fa-user"></i>
-                        <p>My Profile</p>
-                    </a>
-                </li>
+                {{--<li class="{{ Request::is('view_proposals*') ? 'active' : '' }}">--}}
+                    {{--<a href="notifications.html">--}}
+                        {{--<i class="fa fa-user"></i>--}}
+                        {{--<p>My Profile</p>--}}
+                    {{--</a>--}}
+                {{--</li>--}}
 
             </ul>
         </div>
     </div>
 
     <div class="main-panel">
-        <nav class="navbar navbar-default navbar-fixed">
+        <nav class="navbar navbar-default  bg-light navbar-light fixed-top">
             <div class="container-fluid">
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navigation-example-2">
@@ -113,10 +113,10 @@
                             </a>
                         </li>
 
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Notifications
-                                <i class="fa fa-envelope" ></i>&nbsp; <span style="color: red;">3</span>
-
+                        <li >
+                            <a href=>Unread proposals
+                                <i class="fa fa-envelope"></i>&nbsp; <span style="color: red;"></span>
+                                @include('proposal.unread')
                             </a>
 
                         </li>

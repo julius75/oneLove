@@ -58,3 +58,11 @@ Route::get('details_stage_two/{id}','ProposalController@details_stage_two')->nam
 
 Route::get('reject_stage_two/{id}','ProposalController@reject_stage_two')->name('reject_stage_two');
 Route::get('accept_stage_final/{id}','ProposalController@accept_stage_final')->name('accept_stage_final');
+
+//Route::get('/notification', function () {
+//    $noti =DB::table('proposals')
+//        ->where('status','not approved')
+//        ->count();
+//    return $noti;
+//});
+//Route::get('unread','ProposalController@unread')->name('unread');

@@ -30,6 +30,9 @@ class CreateProposalsTable extends Migration
             $table->string('activities');
             $table->string('budget');
             $table->string('status')->default('not approved');
+
+            $table->boolean('is_Submit')->default(false);
+
             $table->timestamps();
         });
     }

@@ -44,13 +44,61 @@ class ProposalController extends Controller
 //    validate data in proposal fields
     public function store(Request $request)
     {
-        $input = $request->input('btn');
-        //$draft = $request->input('sub');
-        if (isset($input)){
-            return 123;
+        $proposal=new Proposal();
+
+
+        $request->validate([
+            'title'=>'string|required',
+            'organization_name'=>'required',
+            'address'=>'string',
+            'phone'=>'required',
+            'email'=>'required|email',
+            'submitted_by_name'=>'required|string',
+            'title_organization'=>'required|string',
+            'summary'=>'required|string',
+            'background'=>'required|string',
+            'activities'=>'required|string',
+            'budget'=>'required',
+
+        ]);
+        if ($request->input('send')=='draft'){
+            $proposal->title=$request->input('title');
+            $proposal->organization_name=$request->input('organization_name');
+            $proposal->address=$request->input('address');
+            $proposal->phone=$request->input('phone');
+            $proposal->email=$request->input('email');
+            $proposal->submitted_by_name=$request->input('submitted_by_name');
+            $proposal->title_organization=$request->input('title_organization');
+            $proposal->summary=$request->input('summary');
+
+            $proposal->activities=$request->input('activities');
+            $proposal->background=$request->input('background');
+            $proposal->budget=$request->input('budget');
+            $proposal->is_Submit=false;
+            $proposal->save();
+            flash('Proposal successfully saved as draft')->success()->important();
+            return back();
+
+
+        }else{
+            $proposal->title=$request->input('title');
+            $proposal->organization_name=$request->input('organization_name');
+            $proposal->address=$request->input('address');
+            $proposal->phone=$request->input('phone');
+            $proposal->email=$request->input('email');
+            $proposal->submitted_by_name=$request->input('submitted_by_name');
+            $proposal->title_organization=$request->input('title_organization');
+            $proposal->summary=$request->input('summary');
+
+            $proposal->activities=$request->input('activities');
+            $proposal->background=$request->input('background');
+            $proposal->budget=$request->input('budget');
+            $proposal->is_Submit=true;
+            $proposal->save();
+            flash('Proposal successfully submitted')->success()->important();
+            return back();
+
         }
-
-
 //            $save=Proposal::create($request->all());
 //            if($save){
 //                flash('Proposal successfully submitted')->success()->important();
@@ -63,7 +111,7 @@ class ProposalController extends Controller
 
 
     public function view_proposals(){
-        $posts=Proposal::orderBy('created_at','desc')->paginate(5);
+        $posts=Proposal::orderBy('created_at','desc')->paginate(3);
 
         return view('admin.view_proposal',compact('posts'));
     }
@@ -93,11 +141,7 @@ class ProposalController extends Controller
     $proposal=Proposal::where('id',$id)->update([
         'status'=>'rejected'
     ]);
-         //$email=Proposal::where('id',$id)->first();
-         //$user_email=User::where('id',$email->user_id)->first();
-         //$proposals=Proposal::where('id',$id)->first();
-        // Mail::to($user_email->email)->send(new ReplyMail($proposals));
-    //dd($proposal);
+
     if ($proposal){
         $proposal=Proposal::where('id',$id)->first();
         Mail::to($proposal->email)->send(new ProposalRejected($proposal) );
@@ -143,7 +187,7 @@ class ProposalController extends Controller
 
 
     public function stage_one(){
-        $one=StageOneProposal::orderBy('created_at','desc')->get();
+        $one=StageOneProposal::orderBy('created_at','desc')->paginate(3);
         return view('proposal.stage_one_list',compact('one'));
     }
 
@@ -203,7 +247,7 @@ class ProposalController extends Controller
     }
 
     public function stage_two(){
-        $two=StageTwoProposal::orderBy('created_at','desc')->get();
+        $two=StageTwoProposal::orderBy('created_at','desc')->paginate(3);
         return view('proposal.stage_two_list',compact('two'));
     }
     public function details_stage_two($id){
@@ -255,5 +299,13 @@ class ProposalController extends Controller
         $twos=StageTwoProposal::where('status','accepted')->orderBy('created_at','desc')->paginate(10);
         return view('admin.accepted_proposals',compact('twos'));
     }
+
+//    public function unread(){
+//        $noti = DB::table('proposals')
+//            ->where('status','not approved')
+//            ->count();
+//        echo $noti;
+//
+//    }
 
 }
