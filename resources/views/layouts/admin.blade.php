@@ -40,7 +40,7 @@
         <div class="sidebar-wrapper">
             <div class="logo">
                 <a href="#" class="simple-text">
-                    oneLOVE
+                    oneLOVE proposal review process
                 </a>
             </div>
 

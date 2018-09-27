@@ -11,9 +11,10 @@
     @if(count($posts)>=1)
         @foreach($posts as $post)
             <div class="well">
-                <h3> <a href="/proposal_details/{{$post->id}}">
-                       <h3> {{$post->title}}</h3>
-                        <h3> {{$post->summary}}</h3>
+                <h3>
+                       <h3> <u>Title</u>: {{$post->title}}</h3>
+                    <a href="/proposal_details/{{$post->id}}">
+                        <h3><u>Summary</u>: {{$post->summary}}</h3>
                     </a> </h3>
                 <small> Submitted on:{{$post->updated_at}}</small>
             </div>

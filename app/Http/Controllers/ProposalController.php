@@ -44,27 +44,68 @@ class ProposalController extends Controller
 //    validate data in proposal fields
     public function store(Request $request)
     {
+        $proposal=new Proposal();
+
+
         $request->validate([
             'title'=>'string|required',
             'organization_name'=>'required',
             'address'=>'string',
-            'phone'=>'required|numeric|size:10',
+            'phone'=>'required',
             'email'=>'required|email',
             'submitted_by_name'=>'required|string',
             'title_organization'=>'required|string',
             'summary'=>'required|string',
             'background'=>'required|string',
             'activities'=>'required|string',
-            'budget'=>'required|numeric|min:4|max:9',
+            'budget'=>'required',
 
         ]);
-            $save=Proposal::create($request->all());
-            if($save){
-                flash('Proposal successfully submitted')->success()->important();
-                return back();
-            }
-            flash('An error occurred while trying to submit the proposal! Please try again')->error()->important();
+        if ($request->input('send')=='draft'){
+            $proposal->title=$request->input('title');
+            $proposal->organization_name=$request->input('organization_name');
+            $proposal->address=$request->input('address');
+            $proposal->phone=$request->input('phone');
+            $proposal->email=$request->input('email');
+            $proposal->submitted_by_name=$request->input('submitted_by_name');
+            $proposal->title_organization=$request->input('title_organization');
+            $proposal->summary=$request->input('summary');
+
+            $proposal->activities=$request->input('activities');
+            $proposal->background=$request->input('background');
+            $proposal->budget=$request->input('budget');
+            $proposal->is_Submit=false;
+            $proposal->save();
+            flash('Proposal successfully saved as draft')->success()->important();
             return back();
+
+
+        }else{
+            $proposal->title=$request->input('title');
+            $proposal->organization_name=$request->input('organization_name');
+            $proposal->address=$request->input('address');
+            $proposal->phone=$request->input('phone');
+            $proposal->email=$request->input('email');
+            $proposal->submitted_by_name=$request->input('submitted_by_name');
+            $proposal->title_organization=$request->input('title_organization');
+            $proposal->summary=$request->input('summary');
+
+            $proposal->activities=$request->input('activities');
+            $proposal->background=$request->input('background');
+            $proposal->budget=$request->input('budget');
+            $proposal->is_Submit=true;
+            $proposal->save();
+            flash('Proposal successfully submitted')->success()->important();
+            return back();
+
+        }
+//            $save=Proposal::create($request->all());
+//            if($save){
+//                flash('Proposal successfully submitted')->success()->important();
+//                return back();
+//            }
+//            flash('An error occurred while trying to submit the proposal! Please try again')->error()->important();
+//            return back();
         }
 
 
@@ -146,7 +187,7 @@ class ProposalController extends Controller
 
 
     public function stage_one(){
-        $one=StageOneProposal::orderBy('created_at','desc')->get();
+        $one=StageOneProposal::orderBy('created_at','desc')->paginate(3);
         return view('proposal.stage_one_list',compact('one'));
     }
 
@@ -206,7 +247,7 @@ class ProposalController extends Controller
     }
 
     public function stage_two(){
-        $two=StageTwoProposal::orderBy('created_at','desc')->get();
+        $two=StageTwoProposal::orderBy('created_at','desc')->paginate(3);
         return view('proposal.stage_two_list',compact('two'));
     }
     public function details_stage_two($id){

@@ -60,8 +60,8 @@
             </div>
             <div class="form-group">
             {{--<button type="submit" class="btn btn-primary" name="submit" value="save_as_draft">Save as draft</button>&nbsp;--}}
-            <button type="Submit" value="save"  class="btn btn-primary">Save</button>
-            {{--<button type="Submit" value="draft" name="sub" class="btn btn-primary">Draft</button>--}}
+            <button type="submit" value="save"  name="send" class="btn btn-primary">Submit For Review </button>
+            <button type="submit" value="draft" name="send" class="btn btn-primary">Save To Draft</button>
             </div>
         </div>
 
